@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Player Chess Game</title>
+    <link rel="stylesheet" href="chess.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Animated Background Particles -->
+        <div class="background" id="particles"></div>
+
+        <div class="content">
+            <!-- Left Panel -->
+            <div class="left-panel">
+                <!-- Title Card -->
+                <div class="card">
+                    <h1 class="title">
+                        <span class="icon">👑</span>
+                        Chess
+                    </h1>
+                    <p class="subtitle">Two Player Game</p>
+                </div>
+
+                <!-- Current Turn Card -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <span class="icon">👤</span>
+                        Current Turn
+                    </h2>
+                    <div id="currentPlayer" class="player-indicator white-turn">WHITE</div>
+                </div>
+
+                <!-- Game Over Card -->
+                <div id="gameOverCard" class="card game-over-card hidden">
+                    <h2 class="game-over-title">Game Over!</h2>
+                    <p id="winnerText" class="winner-text"></p>
+                </div>
+
+                <!-- Reset Button -->
+                <button id="resetButton" class="reset-button">New Game</button>
+
+                <!-- Captured Pieces Card -->
+                <div class="card">
+                    <h3 class="captured-title">Captured Pieces</h3>
+                    <div class="captured-container">
+                        <div class="captured-row">
+                            <span class="captured-label">White:</span>
+                            <div id="capturedWhite" class="captured-pieces"></div>
+                        </div>
+                        <div class="captured-row">
+                            <span class="captured-label">Black:</span>
+                            <div id="capturedBlack" class="captured-pieces"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chess Board -->
+            <div class="board-container">
+                <div class="board-wrapper">
+                    <div id="chessBoard" class="chess-board"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Background */
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-100px) translateX(50px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+    50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Content Layout */
+.content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Left Panel */
+.left-panel {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Card Styles */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon {
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: #e9d5ff;
+    font-size: 0.875rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Player Indicator */
+.player-indicator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.white-turn {
+    background: white;
+    color: #0f172a;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.black-turn {
+    background: #0f172a;
+    color: white;
+    border: 2px solid white;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Game Over Card */
+.game-over-card {
+    background: linear-gradient(135deg, #facc15 0%, #f97316 100%);
+    border: 2px solid #fde047;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.game-over-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.winner-text {
+    color: white;
+    font-size: 1.125rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Reset Button */
+.reset-button {
+    width: 100%;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.reset-button:hover {
+    background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
+    transform: scale(1.05);
+}
+
+/* Captured Pieces */
+.captured-title {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.captured-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.captured-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.captured-label {
+    color: white;
+    font-size: 0.75rem;
+}
+
+.captured-pieces {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.captured-pieces span {
+    font-size: 1.5rem;
+}
+
+/* Chess Board Container */
+.board-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Chess Square */
+.square {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    user-select: none;
+}
+
+.square.light {
+    background: #fef3c7;
+}
+
+.square.dark {
+    background: #b45309;
+}
+
+.square:hover {
+    filter: brightness(1.1);
+}
+
+.square.selected {
+    box-shadow: inset 0 0 0 4px #facc15;
+    transform: scale(0.95);
+}
+
+.square.valid-move:hover {
+    background: #4ade80 !important;
+}
+
+.square .piece {
+    transition: transform 0.2s;
+}
+
+.square:hover .piece {
+    transform: scale(1.1);
+}
+
+.square.selected .piece {
+    transform: scale(1.1);
+}
+
+/* Valid Move Indicator */
+.valid-move-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.valid-move-dot {
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.valid-move-dot.empty {
+    width: 12px;
+    height: 12px;
+    background: #22c55e;
+}
+
+.valid-move-dot.capture {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #22c55e;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+    }
+    
+    .left-panel {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .square {
+        width: 48px;
+        height: 48px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .square {
+        width: 40px;
+        height: 40px;
+        font-size: 1.75rem;
+    }
+}
